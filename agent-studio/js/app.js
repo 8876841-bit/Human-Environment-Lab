@@ -21,6 +21,36 @@ const App = {
   },
 
   /**
+   * 打开设置弹窗
+   */
+  openSettings() {
+    Renderer.showSettingsModal();
+  },
+
+  /**
+   * 保存 API Keys
+   */
+  saveApiKeys(keys) {
+    Store.saveApiKeys(keys);
+    Renderer.showToast('API Keys 已保存', 'success');
+  },
+
+  /**
+   * 检查 API Key 是否已配置
+   */
+  hasApiKey(name) {
+    const key = Store.getApiKey(name);
+    return key && key.length > 0;
+  },
+
+  /**
+   * 获取 API Key
+   */
+  getApiKey(name) {
+    return Store.getApiKey(name);
+  },
+
+  /**
    * 创建新任务
    */
   createTask() {

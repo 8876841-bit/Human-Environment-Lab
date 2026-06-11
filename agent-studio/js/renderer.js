@@ -17,6 +17,7 @@ const Renderer = {
           <div class="nav-links">
             <a href="#" class="${activeTab === 'workspace' ? 'active' : ''}" data-tab="workspace">工作台</a>
             <a href="#" class="${activeTab === 'history' ? 'active' : ''}" data-tab="history">历史记录</a>
+            <a href="#" id="settings-btn">⚙️ API设置</a>
           </div>
         </div>
       </nav>
@@ -293,23 +294,84 @@ const Renderer = {
    * 渲染生成结果
    */
   renderGenerateResult(result) {
-    return `
-      <div class="card" style="background: #f1f8e9; border-color: #a5d6a7; margin-bottom: 16px;">
-        <h4 style="color: #2e7d32; margin-bottom: 8px;">✓ 生成就绪</h4>
-        <p style="font-size: 14px;">图片和视频已准备好生成，点击下方链接配置 API：</p>
-        <ul style="margin-top: 12px; font-size: 14px;">
-          <li><a href="https://liblib.ai" target="_blank" style="color: var(--gold);">Liblib（哩布哩布）</a> - 图片生成</li>
-          <li><a href="https://tapnow.cn" target="_blank" style="color: var(--gold);">TapNow</a> - 视频生成</li>
-        </ul>
-      </div>
+    let html = '';
 
-      <h4 style="margin-bottom: 12px;">后续步骤</h4>
-      ${result.nextSteps.map((step, i) => `
-        <div style="padding: 12px; border-left: 3px solid var(--gold); margin-bottom: 8px; background: var(--card);">
-          ${step}
+    // 显示生成的图片
+    if (result.images && result.images.length > 0) {
+      html += `<h4 style="margin-bottom: 12px;">🖼️ 生成的图片（${result.images.filter(i => i.status === 'success').length}/${result.images.length}）</h4>`;
+      html += `<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px;">`;
+
+      for (const img of result.images) {
+        if (img.status === 'success') {
+          html += `
+            <div class="card" style="padding: 12px; text-align: center;">
+              <img src="${img.url}" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" alt="生成图片 ${img.shotIndex}">
+              <div style="font-size: 12px; color: var(--muted);">分镜 ${img.shotIndex}</div>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="card" style="padding: 12px; text-align: center; border-color: var(--danger);">
+              <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+              <div style="font-size: 12px; color: var(--danger);">分镜 ${img.shotIndex} 生成失败</div>
+              <div style="font-size: 11px; color: var(--muted); margin-top: 4px;">${img.error || '未知错误'}</div>
+            </div>
+          `;
+        }
+      }
+      html += `</div>`;
+    }
+
+    // 显示生成的视频
+    if (result.videos && result.videos.length > 0) {
+      html += `<h4 style="margin-bottom: 12px;">🎬 生成的视频（${result.videos.filter(v => v.status === 'success').length}/${result.videos.length}）</h4>`;
+      html += `<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px;">`;
+
+      for (const vid of result.videos) {
+        if (vid.status === 'success') {
+          html += `
+            <div class="card" style="padding: 12px; text-align: center;">
+              ${vid.cover_url ? `<img src="${vid.cover_url}" style="width: 100%; border-radius: 8px; margin-bottom: 8px;" alt="视频封面 ${vid.shotIndex}">` : ''}
+              <a href="${vid.url}" target="_blank" class="btn btn-primary" style="font-size: 12px; padding: 8px 16px;">下载 分镜 ${vid.shotIndex}</a>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="card" style="padding: 12px; text-align: center; border-color: var(--danger);">
+              <div style="font-size: 24px; margin-bottom: 8px;">⚠️</div>
+              <div style="font-size: 12px; color: var(--danger);">分镜 ${vid.shotIndex} 视频失败</div>
+            </div>
+          `;
+        }
+      }
+      html += `</div>`;
+    }
+
+    // 如果没有生成任何内容
+    if (!result.images || result.images.length === 0) {
+      html += `
+        <div class="card" style="background: #fff3e0; border-color: #ffcc80; margin-bottom: 16px;">
+          <h4 style="color: #e65100; margin-bottom: 8px;">⚡ 等待生成</h4>
+          <p style="font-size: 14px;">配置 API Key 后自动生成图片和视频：</p>
+          <ul style="margin-top: 12px; font-size: 14px;">
+            <li><strong>OpenAI DALL-E 3</strong> - 出图（推荐）</li>
+            <li><strong>通义万相</strong> - 出图（备选，免费额度）</li>
+            <li><strong>可灵</strong> - 视频生成</li>
+          </ul>
+          <p style="font-size: 12px; color: var(--muted); margin-top: 12px;">点击右上角 ⚙️ API设置 配置</p>
         </div>
-      `).join('')}
-    `;
+      `;
+    }
+
+    // 后续步骤
+    html += `<h4 style="margin-bottom: 12px;">📋 后续步骤</h4>`;
+    html += result.nextSteps.map((step, i) => `
+      <div style="padding: 12px; border-left: 3px solid var(--gold); margin-bottom: 8px; background: var(--card);">
+        ${step}
+      </div>
+    `).join('');
+
+    return html;
   },
 
   /**
@@ -434,6 +496,106 @@ const Renderer = {
         else if (action === 'export') App.exportTask(id);
         else if (action === 'delete') App.deleteTask(id);
       });
+    });
+
+    // 设置按钮
+    const settingsBtn = document.getElementById('settings-btn');
+    if (settingsBtn) {
+      settingsBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        App.openSettings();
+      });
+    }
+  },
+
+  /**
+   * 显示设置弹窗
+   */
+  showSettingsModal() {
+    const existingModal = document.querySelector('.modal-overlay');
+    if (existingModal) existingModal.remove();
+
+    const keys = Store.getApiKeys();
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay active';
+    modal.innerHTML = `
+      <div class="modal" style="max-width: 500px;">
+        <div class="modal-header">
+          <h3>API 设置</h3>
+          <button class="modal-close" id="close-settings-btn">×</button>
+        </div>
+        <p style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
+          配置你的 API Keys，所有密钥存储在本地浏览器中，不会上传到任何服务器。
+        </p>
+
+        <div class="input-group">
+          <label>OpenAI API Key</label>
+          <input type="password" id="api-openai" placeholder="sk-..." value="${keys.openai || ''}">
+          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+            用于：选题Agent、脚本Agent、DALL-E图片生成
+          </small>
+        </div>
+
+        <div class="input-group">
+          <label>通义万相 API Key（备选）</label>
+          <input type="password" id="api-dashscope" placeholder="sk-..." value="${keys.dashscope || ''}">
+          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+            用于：出图（免费额度），可替代 OpenAI
+          </small>
+        </div>
+
+        <div class="input-group">
+          <label>可灵 API Key（视频）</label>
+          <input type="password" id="api-kling" placeholder="AK...SK..." value="${keys.kling || ''}">
+          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+            用于：视频生成 | <a href="https://platform.klingai.com" target="_blank" style="color: var(--gold);">获取Key →</a>
+          </small>
+        </div>
+
+        <div class="actions" style="margin-top: 24px;">
+          <button class="btn btn-primary" id="save-api-btn">💾 保存</button>
+          <button class="btn btn-secondary" id="test-api-btn">🔬 测试连接</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // 绑定事件
+    document.getElementById('close-settings-btn').addEventListener('click', () => modal.remove());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.remove();
+    });
+
+    document.getElementById('save-api-btn').addEventListener('click', () => {
+      const keys = {
+        openai: document.getElementById('api-openai').value.trim(),
+        dashscope: document.getElementById('api-dashscope').value.trim(),
+        kling: document.getElementById('api-kling').value.trim()
+      };
+      App.saveApiKeys(keys);
+      modal.remove();
+    });
+
+    document.getElementById('test-api-btn').addEventListener('click', async () => {
+      const openaiKey = document.getElementById('api-openai').value.trim();
+      if (openaiKey) {
+        try {
+          const response = await fetch('https://api.openai.com/v1/models', {
+            headers: { 'Authorization': `Bearer ${openaiKey}` }
+          });
+          if (response.ok) {
+            this.showToast('OpenAI API 连接成功！', 'success');
+          } else {
+            this.showToast('API Key 无效', 'error');
+          }
+        } catch (e) {
+          this.showToast('连接失败：' + e.message, 'error');
+        }
+      } else {
+        this.showToast('请先输入 API Key', 'error');
+      }
     });
   },
 

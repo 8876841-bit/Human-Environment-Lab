@@ -31,6 +31,44 @@ const Store = {
     }
   },
 
+  // ===== API Key 管理 =====
+
+  /**
+   * 获取 API Keys
+   */
+  getApiKeys() {
+    const data = this.getAll();
+    return data.apiKeys || {};
+  },
+
+  /**
+   * 保存 API Keys
+   */
+  saveApiKeys(keys) {
+    const data = this.getAll();
+    data.apiKeys = { ...data.getApiKeys(), ...keys };
+    this.save(data);
+  },
+
+  /**
+   * 获取单个 API Key
+   */
+  getApiKey(name) {
+    const keys = this.getApiKeys();
+    return keys[name] || '';
+  },
+
+  /**
+   * 删除 API Keys
+   */
+  clearApiKeys() {
+    const data = this.getAll();
+    data.apiKeys = {};
+    this.save(data);
+  },
+
+  // ===== 任务管理 =====
+
   /**
    * 获取所有任务
    */
