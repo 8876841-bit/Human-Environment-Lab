@@ -1,1 +1,3 @@
 .env
+hel-agent-workbench/config.yaml
+hel-agent-workbench/results/*.json
