@@ -520,37 +520,88 @@ const Renderer = {
     const modal = document.createElement('div');
     modal.className = 'modal-overlay active';
     modal.innerHTML = `
-      <div class="modal" style="max-width: 500px;">
+      <div class="modal" style="max-width: 600px;">
         <div class="modal-header">
-          <h3>API 设置</h3>
+          <h3>🔑 API 设置</h3>
           <button class="modal-close" id="close-settings-btn">×</button>
         </div>
         <p style="color: var(--muted); font-size: 14px; margin-bottom: 24px;">
           配置你的 API Keys，所有密钥存储在本地浏览器中，不会上传到任何服务器。
         </p>
 
-        <div class="input-group">
-          <label>OpenAI API Key</label>
-          <input type="password" id="api-openai" placeholder="sk-..." value="${keys.openai || ''}">
-          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
-            用于：选题Agent、脚本Agent、DALL-E图片生成
-          </small>
+        <!-- 文本生成 API -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="color: var(--gold); margin-bottom: 12px;">📝 文本生成（优先使用）</h4>
+
+          <div class="input-group">
+            <label>DeepSeek API Key <span style="color: var(--green); font-size: 12px;">推荐 ✓</span></label>
+            <input type="password" id="api-deepseek" placeholder="sk-..." value="${keys.deepseek || ''}">
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              用于：选题、脚本、分镜描述（便宜、专业）
+            </small>
+          </div>
+
+          <div class="input-group">
+            <label>Claude API Key</label>
+            <input type="password" id="api-claude" placeholder="sk-ant-..." value="${keys.claude || ''}">
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              用于：文本生成（备选）
+            </small>
+          </div>
+
+          <div class="input-group">
+            <label>OpenAI API Key</label>
+            <input type="password" id="api-openai" placeholder="sk-..." value="${keys.openai || ''}">
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              用于：DALL-E 图片生成
+            </small>
+          </div>
         </div>
 
-        <div class="input-group">
-          <label>通义万相 API Key（备选）</label>
-          <input type="password" id="api-dashscope" placeholder="sk-..." value="${keys.dashscope || ''}">
-          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
-            用于：出图（免费额度），可替代 OpenAI
-          </small>
+        <!-- 图片生成 API -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="color: var(--gold); margin-bottom: 12px;">🖼️ 图片生成</h4>
+
+          <div class="input-group">
+            <label>通义万相 API Key <span style="color: var(--green); font-size: 12px;">免费额度 ✓</span></label>
+            <input type="password" id="api-dashscope" placeholder="sk-..." value="${keys.dashscope || ''}">
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              用于：AI 出图（备选，通义万相有免费额度）
+            </small>
+          </div>
         </div>
 
-        <div class="input-group">
-          <label>可灵 API Key（视频）</label>
-          <input type="password" id="api-kling" placeholder="AK...SK..." value="${keys.kling || ''}">
-          <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
-            用于：视频生成 | <a href="https://platform.klingai.com" target="_blank" style="color: var(--gold);">获取Key →</a>
-          </small>
+        <!-- 视频生成 API -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="color: var(--gold); margin-bottom: 12px;">🎬 视频生成</h4>
+
+          <div class="input-group">
+            <label>可灵 Access Key</label>
+            <input type="password" id="api-kling-access" placeholder="AK..." value="${keys.kling_access || ''}">
+          </div>
+
+          <div class="input-group">
+            <label>可灵 Secret Key</label>
+            <input type="password" id="api-kling-secret" placeholder="SK..." value="${keys.kling_secret || ''}">
+            <small style="color: var(--muted); font-size: 12px; margin-top: 4px; display: block;">
+              用于：视频生成 | <a href="https://platform.klingai.com" target="_blank" style="color: var(--gold);">获取Key →</a>
+            </small>
+          </div>
+        </div>
+
+        <!-- 语音合成 API -->
+        <div style="margin-bottom: 24px;">
+          <h4 style="color: var(--gold); margin-bottom: 12px;">🔊 语音合成（可选）</h4>
+
+          <div class="input-group">
+            <label>火山引擎 App ID</label>
+            <input type="text" id="api-volc-appid" placeholder="4260960907" value="${keys.volc_appid || ''}">
+          </div>
+
+          <div class="input-group">
+            <label>火山引擎 Token</label>
+            <input type="password" id="api-volc-token" placeholder="Token" value="${keys.volc_token || ''}">
+          </div>
         </div>
 
         <div class="actions" style="margin-top: 24px;">
@@ -570,23 +621,38 @@ const Renderer = {
 
     document.getElementById('save-api-btn').addEventListener('click', () => {
       const keys = {
+        deepseek: document.getElementById('api-deepseek').value.trim(),
+        claude: document.getElementById('api-claude').value.trim(),
         openai: document.getElementById('api-openai').value.trim(),
         dashscope: document.getElementById('api-dashscope').value.trim(),
-        kling: document.getElementById('api-kling').value.trim()
+        kling_access: document.getElementById('api-kling-access').value.trim(),
+        kling_secret: document.getElementById('api-kling-secret').value.trim(),
+        volc_appid: document.getElementById('api-volc-appid').value.trim(),
+        volc_token: document.getElementById('api-volc-token').value.trim()
       };
       App.saveApiKeys(keys);
       modal.remove();
+      this.showToast('API 设置已保存', 'success');
     });
 
     document.getElementById('test-api-btn').addEventListener('click', async () => {
-      const openaiKey = document.getElementById('api-openai').value.trim();
-      if (openaiKey) {
+      const deepseekKey = document.getElementById('api-deepseek').value.trim();
+      if (deepseekKey) {
         try {
-          const response = await fetch('https://api.openai.com/v1/models', {
-            headers: { 'Authorization': `Bearer ${openaiKey}` }
+          const response = await fetch('https://api.deepseek.com/chat/completions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${deepseekKey}`
+            },
+            body: JSON.stringify({
+              model: 'deepseek-chat',
+              messages: [{ role: 'user', content: 'hi' }],
+              max_tokens: 10
+            })
           });
           if (response.ok) {
-            this.showToast('OpenAI API 连接成功！', 'success');
+            this.showToast('DeepSeek API 连接成功！', 'success');
           } else {
             this.showToast('API Key 无效', 'error');
           }

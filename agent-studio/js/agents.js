@@ -1,6 +1,6 @@
 /**
- * 各 Agent 逻辑
- * 优先使用真实 API，无 API 时使用模拟数据
+ * 各 Agent 逻辑 v2
+ * 优先使用专业 API：DeepSeek > Claude > OpenAI
  */
 
 const Agents = {
@@ -8,10 +8,8 @@ const Agents = {
    * 选题 Agent - 生成 5 个选题
    */
   async topicAgent(topic) {
-    const openaiKey = Store.getApiKey('openai');
-
-    if (openaiKey) {
-      // 使用真实 API
+    try {
+      // 使用真实 API（自动选择可用的）
       const prompt = `你是 Human-Environment-Lab 的内容选题专家。
 
 根据主题「${topic}」，生成 5 个原创选题。
@@ -27,43 +25,18 @@ const Agents = {
 
 只需输出 JSON，不要其他内容。`;
 
-      const result = await API.openai(prompt, { model: 'gpt-4o', max_tokens: 1500 });
+      const result = await API.generateText(prompt, { max_tokens: 1500 });
       const topics = JSON.parse(result);
 
       return {
         count: topics.length,
         topics: topics,
-        source: 'openai',
+        source: 'deepseek',
         timestamp: new Date().toISOString()
       };
-    } else {
-      // 使用模拟数据
-      await this.delay(1500 + Math.random() * 1000);
-
-      const defaultTopics = [
-        '独居人的厨房收纳哲学',
-        '阳台绿植与城市焦虑',
-        '出租屋改造：家的边界感',
-        '智能音箱与家庭对话消失',
-        '咖啡角：都市人的精神角落'
-      ];
-
-      const selected = defaultTopics.slice(0, 5).map((t, i) => ({
-        id: `OBS-${String(i + 1).padStart(3, '0')}`,
-        title: t,
-        description: `${t}：探讨人在这个空间里的真实需求和行为模式`,
-        needs: ['效率', '掌控', '连接'],
-        behavior: ['放', '拿', '找'],
-        environment: ['光', '材料', '空间'],
-        system: '家庭系统'
-      }));
-
-      return {
-        count: 5,
-        topics: selected,
-        source: 'mock',
-        timestamp: new Date().toISOString()
-      };
+    } catch (e) {
+      console.error('选题失败:', e);
+      throw e;
     }
   },
 
@@ -71,10 +44,9 @@ const Agents = {
    * 脚本 Agent - 生成 1 分钟视频脚本
    */
   async scriptAgent(topicResult) {
-    const openaiKey = Store.getApiKey('openai');
     const selectedTopic = topicResult.topics[0];
 
-    if (openaiKey) {
+    try {
       const prompt = `你是 Human-Environment-Lab 的内容脚本专家。
 
 选题：「${selectedTopic.title}」
@@ -100,52 +72,14 @@ const Agents = {
 
 只需输出 JSON，不要其他内容。`;
 
-      const result = await API.openai(prompt, { model: 'gpt-4o', max_tokens: 2000 });
+      const result = await API.generateText(prompt, { max_tokens: 2000 });
       const script = JSON.parse(result);
-      script.source = 'openai';
+      script.source = 'deepseek';
       script.timestamp = new Date().toISOString();
       return script;
-    } else {
-      await this.delay(2000 + Math.random() * 1500);
-
-      return {
-        title: selectedTopic.title,
-        duration: '60秒',
-        source: 'mock',
-        structure: {
-          opening: {
-            time: '0-5秒',
-            content: '钩子：让人停下来的一句话',
-            text: `你有没有想过，为什么同样是回家，有些人的家会让他们放松，有些人的家反而更累？`
-          },
-          body1: {
-            time: '5-20秒',
-            content: '提出问题或现象',
-            text: `我们花了很多时间研究装修风格、板材选择、五金配置。但很少有人问：${selectedTopic.title}这件事，到底在解决什么问题？`
-          },
-          body2: {
-            time: '20-40秒',
-            content: '深入分析或故事',
-            text: `我观察了很多家庭，发现一个规律：当空间设计真正从"人怎么生活"出发，而不是从"好看不好看"出发的时候，那个空间会自己说话。`
-          },
-          body3: {
-            time: '40-55秒',
-            content: '核心观点',
-            text: `${selectedTopic.description.split('：')[0]}，本质上是在回答一个问题：人需要什么样的环境才能成为更好的自己？`
-          },
-          ending: {
-            time: '55-60秒',
-            content: '留白或引发思考的问题',
-            text: `所以，下次当你站在自己的空间里，问自己一个问题：这个环境，是让我更像我自己吗？`
-          }
-        },
-        style: {
-          tone: '轻盈、有深度、有见解',
-          pace: '适中，留白感'
-        },
-        bgm: '建议：Ambient、Lo-fi、或简约钢琴曲',
-        timestamp: new Date().toISOString()
-      };
+    } catch (e) {
+      console.error('脚本生成失败:', e);
+      throw e;
     }
   },
 
@@ -153,9 +87,7 @@ const Agents = {
    * 画面 Agent - 生成分镜描述
    */
   async visualAgent(scriptResult) {
-    const openaiKey = Store.getApiKey('openai');
-
-    if (openaiKey) {
+    try {
       const scriptText = Object.values(scriptResult.structure).map(s => s.text).join('\n');
 
       const prompt = `你是 Human-Environment-Lab 的分镜画面专家。
@@ -180,44 +112,14 @@ ${scriptText}
 
 只需输出 JSON，不要其他内容。`;
 
-      const result = await API.openai(prompt, { model: 'gpt-4o', max_tokens: 2500 });
+      const result = await API.generateText(prompt, { max_tokens: 2500 });
       const visual = JSON.parse(result);
-      visual.source = 'openai';
+      visual.source = 'deepseek';
       visual.timestamp = new Date().toISOString();
       return visual;
-    } else {
-      await this.delay(1500 + Math.random() * 1000);
-
-      const story = scriptResult.structure;
-      const storyParts = [story.opening, story.body1, story.body2, story.body3, story.ending];
-
-      const shots = storyParts.map((part, i) => ({
-        index: i + 1,
-        time: part.time,
-        description: part.content,
-        visual: {
-          scene: this.getScene(i),
-          subject: '抽象概念化的人物轮廓',
-          style: '抽象艺术 + 科幻感 + 未来感',
-          color: i % 2 === 0 ? '深蓝/深灰背景' : '暖色点缀',
-          atmosphere: i < 2 ? '沉稳' : '渐入希望',
-          angle: ['主观视角', '俯拍', '特写', '全景', '仰拍'][i]
-        },
-        prompt: this.getPrompt(i, part),
-        motion: i < 2 ? '缓慢' : '流动'
-      }));
-
-      return {
-        title: scriptResult.title,
-        shots: shots,
-        source: 'mock',
-        styleGuide: {
-          overall: '抽象艺术 + 科幻感 + 未来感 + 代入感',
-          avoid: '写实主义、过于具象',
-          colorPalette: '深色系为主，点缀色金色/蓝色/白色光线'
-        },
-        timestamp: new Date().toISOString()
-      };
+    } catch (e) {
+      console.error('画面生成失败:', e);
+      throw e;
     }
   },
 
@@ -225,10 +127,10 @@ ${scriptText}
    * 生成 Agent - 生成图片/视频
    */
   async generateAgent(visualResult) {
-    const assets = [];
     const images = [];
+    const videos = [];
 
-    // 生成图片
+    // 生成图片（DALL-E 或通义万相）
     for (const shot of visualResult.shots) {
       try {
         const imageData = await API.generateImage(shot.prompt, {
@@ -254,9 +156,7 @@ ${scriptText}
     }
 
     // 视频生成（可灵）
-    const klingKey = Store.getApiKey('kling');
-    const videos = [];
-
+    const klingKey = Store.getApiKey('kling_access');
     if (klingKey) {
       for (const shot of visualResult.shots) {
         try {

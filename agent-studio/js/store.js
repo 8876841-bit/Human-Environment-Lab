@@ -46,7 +46,18 @@ const Store = {
    */
   saveApiKeys(keys) {
     const data = this.getAll();
-    data.apiKeys = { ...data.getApiKeys(), ...keys };
+    data.apiKeys = { ...data.apiKeys, ...keys };
+    this.save(data);
+  },
+
+  /**
+   * 保存单个 API Key
+   */
+  saveApiKey(name, value) {
+    const keys = this.getApiKeys();
+    keys[name] = value;
+    const data = this.getAll();
+    data.apiKeys = keys;
     this.save(data);
   },
 
@@ -65,6 +76,19 @@ const Store = {
     const data = this.getAll();
     data.apiKeys = {};
     this.save(data);
+  },
+
+  /**
+   * 获取火山引擎 TTS 配置
+   */
+  getVolcTtsConfig() {
+    const keys = this.getApiKeys();
+    return {
+      appid: keys.volc_appid || '',
+      token: keys.volc_token || '',
+      cluster: keys.volc_cluster || 'volcano_icl',
+      voice_type: keys.volc_voice_type || 'S_N93UWQr52'
+    };
   },
 
   // ===== 任务管理 =====
@@ -92,7 +116,7 @@ const Store = {
     const task = {
       id: Date.now().toString(),
       topic: topic,
-      status: 'pending', // pending, running, completed, failed
+      status: 'pending',
       currentStage: 0,
       stages: [
         { id: 'topic', name: '选题', status: 'pending', result: null },
@@ -169,7 +193,7 @@ const Store = {
    * 清空所有任务
    */
   clearAll() {
-    this.save({ tasks: [], settings: {} });
+    this.save({ tasks: [], settings: {}, apiKeys: this.getApiKeys() });
     return true;
   },
 
