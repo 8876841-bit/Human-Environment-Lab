@@ -91,6 +91,9 @@
 05-内容生产体系/
 └── 内容中枢设计.md             ← 完整设计（16章节）
 
+04-外部输入模块/               ← n8n多平台内容采集引擎
+└── n8n多平台内容采集引擎.md
+
 agent-studio/                   ← 浏览器端工作台
 hel-agent-workbench/            ← Python版Agent
 
