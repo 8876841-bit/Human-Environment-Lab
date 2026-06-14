@@ -1,143 +1,147 @@
 # Human-Environment-Lab 交接说明
 
-## 当前任务
+> 本文件用于跨工具、跨会话接续。进入新会话后，先读本文件，再读 `CURRENT-MAINLINE.md`。
 
-把 Human-Environment-Lab（人与环境实验室）相关内容做成一个可打开、可发布的网站，并整理一个“多 Agent 内容生产流水线操作指南”页面。
+---
 
-当前工作目录：
+## 当前任务状态
 
-```text
-/Users/wqq/Human-Environment-Lab
-```
-
-## 已完成内容
-
-1. 已创建项目主页：
+仓库已进入：
 
 ```text
-/Users/wqq/Human-Environment-Lab/index.html
+V2.1：仓库治理 + 生产验证阶段
 ```
 
-主页内容包括：
-- Human-Environment-Lab 项目定位
-- “人 -> 行为 -> 环境 -> 系统 -> 未来”观察框架
-- “需求 × 行为 × 环境 × 系统 = 原创选题”公式
-- 当前研究专题
-- 最新观察
-- 内容生成引擎
-- 100 个观察计划
-- Human-Environment-Agent 概念
-
-2. 已创建多 Agent 内容生产流水线指南页面：
+当前重点不是继续扩展新模块，而是：
 
 ```text
-/Users/wqq/Human-Environment-Lab/guide/index.html
+治理主线
+↓
+补真实 OBS
+↓
+跑通 Dify 节点 1 + 节点 2
+↓
+发布内容
+↓
+记录复盘
 ```
 
-3. 已创建对应 Markdown 操作指南：
+---
+
+## 当前主线
+
+当前唯一执行主线：
 
 ```text
-/Users/wqq/Human-Environment-Lab/guide/HEL-多Agent内容生产流水线操作指南.md
+05-内容生产体系/10-Dify工作流搭建实施指南.md
 ```
 
-4. 原来的中文目录已被改名：
+当前内容体系入口：
 
 ```text
-操作指南 -> guide
+05-内容生产体系/README.md
 ```
 
-这样做是为了避免 GitHub Pages 或浏览器路径里的中文目录导致打不开。
-
-## 当前 Git 状态
-
-当前 `git status --short` 显示：
+当前治理入口：
 
 ```text
-D  操作指南/HEL-多Agent内容生产流水线操作指南.md
-D  操作指南/index.html
-?? guide/
+CURRENT-MAINLINE.md
+STATUS.md
+DECISION-LOG.md
+RUNBOOK.md
 ```
 
-这表示 Git 还没有把“中文目录改名为英文目录”识别成正式重命名。下一步需要执行：
+---
 
-```bash
-git add -A
-git commit -m "Rename guide folder and update HEL guide site"
-git push origin main
-```
+## 当前已经完成的治理动作
 
-推送前建议先检查页面是否本地可打开。
+1. 新增 `CURRENT-MAINLINE.md`：声明当前主线。
+2. 新增 `STATUS.md`：标记各目录状态。
+3. 新增 `DECISION-LOG.md`：记录重大决策。
+4. 新增 `RUNBOOK.md`：日常运行手册。
+5. 更新 `README.md`：指向当前主线。
+6. 给 `guide/` 新增 README，标注为历史方案。
+7. 给 `04-账号矩阵/` 新增 README，标注为中长期设想。
+8. 给 `agent-studio/` 新增 README，标注为实验项目。
+9. 给 `hel-agent-workbench/` 新增 README，标注为实验项目。
 
-## 当前卡点
+---
 
-Transform 中转服务 `rsxermu666.cn` 多次返回 Cloudflare 520/522：
+## 当前模块状态
+
+| 模块 | 状态 | 说明 |
+|---|---|---|
+| `01-观察框架/` | FOUNDATION | 底层理论框架 |
+| `02-内容引擎/` | FOUNDATION | 早期内容流水线 V1 |
+| `03-观察日志/` | CORE | 当前最需要补强的真实观察库 |
+| `05-内容生产体系/` | CORE | 当前内容体系主线 |
+| `06-Dify多Agent工作流/` | CORE / NEEDS_TEST | Dify DSL 与知识库资产，需实测联调 |
+| `guide/` | LEGACY | 早期 Coze/Liblib/TapNow 指南 |
+| `04-账号矩阵/` | LEGACY / LONG-TERM | 中长期设想，当前不铺 8 个账号 |
+| `agent-studio/` | EXPERIMENT | 浏览器端实验工作台 |
+| `hel-agent-workbench/` | EXPERIMENT | Python Agent 原型 |
+| `04-外部输入模块/` | PLANNING | n8n 外部输入，二期再做 |
+
+---
+
+## 当前最重要的下一步
 
 ```text
-API Error: 522
-Cloudflare could not establish a TCP connection to the origin server
+建立 10 条真实 OBS。
 ```
 
-这不是本地文件问题，也不是 API key 文件问题，而是 Transform 后端服务不稳定。当前不建议继续使用 `claude-transform` 处理这个任务。
-
-建议改用已经测试通过的官方入口：
-
-```bash
-claude-anthropic
-```
-
-或者 DeepSeek：
-
-```bash
-claude-deepseek
-```
-
-## 本地打开方式
-
-主页：
-
-```bash
-open /Users/wqq/Human-Environment-Lab/index.html
-```
-
-操作指南页：
-
-```bash
-open /Users/wqq/Human-Environment-Lab/guide/index.html
-```
-
-如果需要通过 GitHub Pages 打开，需要确认仓库 Pages 设置已开启，并且推送了最新目录结构。
-
-## 下一步计划
-
-1. 退出当前 Transform 会话：
+优先从真实家装案例里提取：
 
 ```text
-/exit
+1. 洗烘机架空安装共振
+2. 小户型开口墙通透
+3. 水电交底避坑
+4. 厨房不锈钢台面与磁吸墙
+5. 猫别墅与独居情绪安放
+6. 四分离客卫灯膜顶
+7. 下沉式客厅不做电视柜
+8. 玄关灰泥墙与洞洞板
+9. 幽灵门折叠门
+10. 全屋定制责任划分
 ```
 
-2. 使用官方 Claude 重新进入：
-
-```bash
-cd /Users/wqq/Human-Environment-Lab
-claude-anthropic
-```
-
-3. 新会话第一句话建议输入：
+每条 OBS 使用：
 
 ```text
-请先阅读 HANDOFF.md，检查当前目录和 git status，然后继续修复 GitHub Pages 可访问问题。
+03-观察日志/OBS-模板.md
 ```
 
-4. 优先处理：
-- 确认 `guide/index.html` 本地能打开
-- 确认主页是否需要链接到 `guide/index.html`
-- `git add -A`
-- commit
-- push
-- 检查 GitHub Pages 设置
+---
 
-## 注意事项
+## 当前不要做的事
 
-- 当前上下文已满，旧 Transform 会话不要继续使用。
-- 不要依赖旧会话记忆，直接以本文件和当前文件系统为准。
-- 如果 GitHub Pages 仍打不开，先确认远程仓库是否启用 Pages，而不是继续改模型或 API key。
+```text
+不要继续扩 8 个账号。
+不要继续新增视觉形式。
+不要继续堆更多 Agent 名字。
+不要急着做 n8n 全平台采集。
+不要把 agent-studio 公开部署。
+不要把系统包装成已经全自动成片。
+```
+
+---
+
+## 新会话第一句话建议
+
+```text
+请先阅读 HANDOFF.md、CURRENT-MAINLINE.md、STATUS.md 和 RUNBOOK.md，然后继续推进 03-观察日志 的真实 OBS 入库工作。
+```
+
+---
+
+## 当前判断
+
+HEL 当前不是缺框架，而是缺真实运行数据。
+
+下一阶段只看三个指标：
+
+```text
+1. 入库了多少条真实 OBS？
+2. 发布了多少条内容？
+3. 复盘有没有反向生成新的 OBS？
+```
