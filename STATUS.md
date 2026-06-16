@@ -33,6 +33,8 @@ RUNBOOK.md
 | `FOUNDATION` | 根基层，提供底层理论与历史模型 |
 | `OUTPUT` | 表达、传播、内容、平台发布相关模块 |
 | `IMPLEMENTATION` | 技术实现层，承接系统执行 |
+| `SYNCED` | 已完成当前阶段的 V3 同步 |
+| `PARTIAL_SYNC` | 已完成关键入口同步，但仍有子文件需要继续同步 |
 | `NEEDS_SYNC` | 内容或 DSL 需要同步 V3 主线 |
 | `LEGACY` | 历史方案，仅作参考，不作为当前执行依据 |
 | `EXPERIMENT` | 实验项目，可用于验证，不作为正式底座 |
@@ -56,8 +58,8 @@ RUNBOOK.md
 | `02-内容引擎/` | `FOUNDATION / LEGACY` | 早期内容流水线 V1，保留为历史参考 |
 | `03-观察日志/` | `CORE` | 真实触发、观察、反馈和可复用 OBS 的沉淀位置 |
 | `04-账号矩阵/` | `LEGACY / LONG-TERM` | 中长期账号矩阵设想，当前阶段不铺 8 个账号 |
-| `05-内容生产体系/` | `OUTPUT / NEEDS_SYNC` | V2 内容生产体系，当前降级为表达与传播模块，需逐步同步 V3 |
-| `06-Dify多Agent工作流/` | `IMPLEMENTATION / NEEDS_SYNC` | Dify DSL 与知识库资产，需从内容工作流同步为 Lab 交付工作流 |
+| `05-内容生产体系/` | `OUTPUT / PARTIAL_SYNC` | 已改为表达与传播模块；README、硬校验清单、V3 Dify 指南已同步，其他 V2 资产保留为工具库 |
+| `06-Dify多Agent工作流/` | `IMPLEMENTATION / PARTIAL_SYNC` | README、总控 Agent、Lab 交付判断 Agent 已同步；脚本、视觉、视频、复盘 Agent 和知识库仍需继续同步 |
 | `04-外部输入模块/` | `PLANNING` | n8n 多平台采集，二期模块，当前暂缓 |
 | `guide/` | `LEGACY` | 早期 Coze/Liblib/TapNow 指南，历史参考 |
 | `agent-studio/` | `EXPERIMENT` | 浏览器端工作台，本地实验，不建议公开部署 |
@@ -113,7 +115,26 @@ ARCHITECTURE.md
 06-Dify多Agent工作流/
 ```
 
-目标：保留 V2 内容生产资产，但逐步同步 V3。
+当前已完成：
+
+```text
+05-内容生产体系/README.md
+05-内容生产体系/00-内容生产硬校验清单.md
+05-内容生产体系/10-Dify工作流搭建实施指南-V3.md
+06-Dify多Agent工作流/README.md
+06-Dify多Agent工作流/dsl/06-HEL-总控Agent.yml
+06-Dify多Agent工作流/dsl/01-HEL-选题Agent.yml
+```
+
+下一步继续同步：
+
+```text
+06-Dify多Agent工作流/dsl/02-HEL-脚本Agent.yml
+06-Dify多Agent工作流/dsl/03-HEL-视觉Agent.yml
+06-Dify多Agent工作流/dsl/04-HEL-视频Agent.yml
+06-Dify多Agent工作流/dsl/05-HEL-复盘Agent.yml
+06-Dify多Agent工作流/knowledge_docs/
+```
 
 同步方向：
 
@@ -158,6 +179,7 @@ guide/
 4. 至少 1 条触发点带回物理世界验证。
 5. 至少 1 条反馈写回规则库、OBS 或运行日志。
 6. 05-内容生产体系 不再作为最高主线，只作为表达与传播模块调用。
+7. Dify 总控入口不再默认进入内容生产，而先进行碳基输入确认与 Lab 交付判断。
 ```
 
 ---
@@ -171,6 +193,7 @@ guide/
 不默认所有触发点都要做成内容。
 不把数字生命当普通文案助手。
 不把 Human-Environment-Lab 简化成内容工厂。
+不把 Dify 总控 Agent 当爆款内容入口。
 ```
 
 ---
