@@ -4,6 +4,73 @@
 
 ---
 
+## 2026-06-16：第四批升级，冻结旧 Dify Agent，重建 V3 硅基数字生命工作流
+
+### 决策
+
+```text
+不再继续逐个同步旧脚本 Agent、视觉 Agent、视频 Agent、复盘 Agent。
+旧 06-Dify多Agent工作流/ 冻结为 V2-V4.1 内容生产参考资产。
+新增 06-硅基数字生命工作流-V3/，按 V3 主线重新搭建。
+```
+
+### 理由
+
+- 旧 Dify Agent 的底层结构仍然是“选题 → 脚本 → 视觉 / 视频 → 发布 → 复盘”。
+- V3 的主线已经变成“碳基真实输入 → 硅基数字处理 → Lab 交付判断 → 物理世界验证 → 双重迭代”。
+- 如果继续同步旧 Agent，系统容易被旧内容生产逻辑重新拉回去。
+- 旧文件仍有价值，但价值在于可提取能力，不在于原结构。
+
+### 新增目录
+
+```text
+06-硅基数字生命工作流-V3/
+```
+
+已新增骨架：
+
+```text
+README.md
+00-旧资产提取报告.md
+01-V3-Agent总图.md
+agents/00-总控Agent.md
+agents/01-碳基输入确认Agent.md
+agents/02-硅基研究分析Agent.md
+agents/03-数字边界守门Agent.md
+agents/04-Lab交付判断Agent.md
+agents/05-表达传播Agent.md
+agents/06-现实反馈复盘Agent.md
+agents/07-规则进化Agent.md
+knowledge/00-核心协议.md
+examples/001-真实触发到Lab判断.md
+```
+
+### 旧目录状态
+
+```text
+06-Dify多Agent工作流/ = LEGACY / REFERENCE
+```
+
+旧文件不删除，但不再作为当前执行主线。
+
+### 新目录状态
+
+```text
+06-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
+```
+
+### 硬边界
+
+```text
+不迁移旧结构。
+不逐个同步旧 Agent。
+不删除旧资产。
+只提取有效能力、规则、样例和边界。
+V3 工作流不以内容生产为默认出口。
+```
+
+---
+
 ## 2026-06-16：第三批升级，同步表达与传播模块、Dify 总控入口
 
 ### 决策
@@ -44,23 +111,15 @@ STATUS.md
 
 - V3 的核心不是“做更多内容”，而是让碳基真实和硅基能力通过 Human-Environment-Lab 形成可验证循环。
 - `05-内容生产体系/` 有大量有效表达资产，不能删除，但必须明确它不是最高主线。
-- `06-Dify多Agent工作流/` 的总控 Agent 和选题 Agent 是最容易把系统带回 V2 内容逻辑的入口，所以必须优先同步。
+- `06-Dify多Agent工作流/` 的总控 Agent 和选题 Agent 是最容易把系统带回 V2 内容逻辑的入口，所以曾优先同步。
+- 第四批升级后，`06-Dify多Agent工作流/` 改为 `LEGACY / REFERENCE`，不再继续逐个同步旧 Agent。
 
 ### 当前状态
 
 ```text
 05-内容生产体系/ = OUTPUT / PARTIAL_SYNC
-06-Dify多Agent工作流/ = IMPLEMENTATION / PARTIAL_SYNC
-```
-
-### 后续待做
-
-```text
-06-Dify多Agent工作流/dsl/02-HEL-脚本Agent.yml
-06-Dify多Agent工作流/dsl/03-HEL-视觉Agent.yml
-06-Dify多Agent工作流/dsl/04-HEL-视频Agent.yml
-06-Dify多Agent工作流/dsl/05-HEL-复盘Agent.yml
-06-Dify多Agent工作流/knowledge_docs/
+06-Dify多Agent工作流/ = LEGACY / REFERENCE
+06-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
 ```
 
 ### 硬边界
@@ -69,6 +128,7 @@ STATUS.md
 Dify 总控 Agent 不能再默认把用户输入带入爆款内容生产。
 选题 Agent 不能再默认输出平台选题。
 任何公开表达都必须先通过碳基真实性、硅基边界和 Lab 交付判断。
+旧 Dify Agent 只能作为参考资产，不作为 V3 主线。
 ```
 
 ---
@@ -102,7 +162,8 @@ V3 主线定义为：
 
 - 新增 `00-系统内核/` 作为最高优先级内核层。
 - `05-内容生产体系/` 不再是最高主线，降级为 `OUTPUT / PARTIAL_SYNC`。
-- `06-Dify多Agent工作流/` 标记为 `IMPLEMENTATION / PARTIAL_SYNC`，后续继续从内容生产 DSL 同步为 Lab 交付判断 DSL。
+- `06-Dify多Agent工作流/` 已进一步降级为 `LEGACY / REFERENCE`。
+- 新增 `06-硅基数字生命工作流-V3/` 作为当前 V3 工作流重建目录。
 - `README.md`、`CURRENT-MAINLINE.md`、`STATUS.md`、`ARCHITECTURE.md`、`RUNBOOK.md`、`HANDOFF.md` 已更新到 V3 主线。
 
 ---
@@ -233,8 +294,9 @@ Coze = 快速验证 / 历史参考
 
 ```text
 Dify 仍是重要底座。
-但 V3 中，Dify 的定位调整为：Lab 交付判断与表达传播模块的长期工作流底座。
-后续需继续同步脚本、视觉、视频、复盘 Agent。
+但 V3 中，不再沿用旧内容生产 Agent 结构作为主线。
+旧 06-Dify多Agent工作流/ 冻结为参考资产。
+新 06-硅基数字生命工作流-V3/ 作为 V3 工作流重建目录。
 ```
 
 ---
