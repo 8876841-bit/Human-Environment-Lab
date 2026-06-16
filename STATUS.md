@@ -4,14 +4,38 @@
 
 ---
 
+## 当前版本
+
+```text
+V3.0：碳基—硅基双分身 Human-Environment-Lab 内核升级阶段
+```
+
+当前最高主线：
+
+```text
+00-系统内核/
+```
+
+当前执行入口：
+
+```text
+RUNBOOK.md
+```
+
+---
+
 ## 状态标签说明
 
 | 标签 | 含义 |
 |---|---|
 | `CORE` | 当前主线，优先维护与执行 |
-| `FOUNDATION` | 根基层，提供底层理论与模型 |
+| `KERNEL` | V3 顶层系统内核，优先级高于所有执行模块 |
+| `FOUNDATION` | 根基层，提供底层理论与历史模型 |
+| `OUTPUT` | 表达、传播、内容、平台发布相关模块 |
+| `IMPLEMENTATION` | 技术实现层，承接系统执行 |
+| `NEEDS_SYNC` | 内容或 DSL 需要同步 V3 主线 |
 | `LEGACY` | 历史方案，仅作参考，不作为当前执行依据 |
-| `EXPERIMENT` | 实验项目，可用于验证，不作为正式生产底座 |
+| `EXPERIMENT` | 实验项目，可用于验证，不作为正式底座 |
 | `PLANNING` | 规划中，暂缓执行 |
 | `SUPPORT` | 支撑文件，用于交接、说明、展示 |
 
@@ -21,21 +45,24 @@
 
 | 路径 | 状态 | 说明 |
 |---|---|---|
-| `README.md` | `SUPPORT` | 项目总入口，需指向当前主线 |
+| `README.md` | `CORE` | 项目总入口，已升级为 V3 主线入口 |
 | `CURRENT-MAINLINE.md` | `CORE` | 当前执行主线声明文件 |
 | `STATUS.md` | `CORE` | 仓库模块状态地图 |
-| `01-观察框架/` | `FOUNDATION` | HEL 底层观察模型，定义总母线、八条母线与核心公式 |
-| `02-内容引擎/` | `FOUNDATION` | 早期内容流水线设计，作为 V1 引擎参考 |
-| `03-观察日志/` | `CORE` | 真实观察与评论痛点入库位置，当前最需要补强 |
+| `RUNBOOK.md` | `CORE` | 日常运行手册 |
+| `HANDOFF.md` | `CORE` | 跨会话交接说明 |
+| `DECISION-LOG.md` | `CORE` | 重大决策记录 |
+| `00-系统内核/` | `KERNEL / CORE` | V3 顶层内核：碳基—硅基双分身、Lab 总定义、Loop Engineering 协议 |
+| `01-观察框架/` | `FOUNDATION` | HEL 旧底层观察模型，保留为理论根基 |
+| `02-内容引擎/` | `FOUNDATION / LEGACY` | 早期内容流水线 V1，保留为历史参考 |
+| `03-观察日志/` | `CORE` | 真实触发、观察、反馈和可复用 OBS 的沉淀位置 |
 | `04-账号矩阵/` | `LEGACY / LONG-TERM` | 中长期账号矩阵设想，当前阶段不铺 8 个账号 |
-| `05-内容生产体系/` | `CORE` | 当前内容体系主线，含转译、视觉、视频、人机协作与 Dify 指南 |
-| `06-Dify多Agent工作流/` | `CORE / NEEDS_TEST` | Dify DSL 与知识库搭建资产，需实测联调 |
+| `05-内容生产体系/` | `OUTPUT / NEEDS_SYNC` | V2 内容生产体系，当前降级为表达与传播模块，需逐步同步 V3 |
+| `06-Dify多Agent工作流/` | `IMPLEMENTATION / NEEDS_SYNC` | Dify DSL 与知识库资产，需从内容工作流同步为 Lab 交付工作流 |
 | `04-外部输入模块/` | `PLANNING` | n8n 多平台采集，二期模块，当前暂缓 |
 | `guide/` | `LEGACY` | 早期 Coze/Liblib/TapNow 指南，历史参考 |
 | `agent-studio/` | `EXPERIMENT` | 浏览器端工作台，本地实验，不建议公开部署 |
 | `hel-agent-workbench/` | `EXPERIMENT` | Python Agent 原型，可用于代码化验证 |
 | `index.html` | `SUPPORT` | GitHub Pages 展示页 |
-| `HANDOFF.md` | `SUPPORT` | 跨会话交接说明，需要保持最新 |
 | `HISTORY.md` | `SUPPORT` | 历史演变记录 |
 | `ARCHITECTURE.md` | `SUPPORT` | 架构说明 |
 | `DERIVATION.md` | `SUPPORT` | 设计推导与决策依据 |
@@ -47,35 +74,70 @@
 ### P0：立即执行
 
 ```text
+00-系统内核/
+CURRENT-MAINLINE.md
+RUNBOOK.md
 03-观察日志/
-05-内容生产体系/10-Dify工作流搭建实施指南.md
-05-内容生产体系/PROGRESS-会话进展与决策记录.md
 ```
 
-目标：用真实 OBS 跑通内容生产闭环。
+目标：跑通 V3 最小循环。
+
+```text
+碳基真实输入
+→ 硅基数字处理
+→ Lab 交付判断
+→ 物理世界验证
+→ 数字生命与 Lab 双重迭代
+```
+
+---
 
 ### P1：同步维护
 
 ```text
 README.md
-CURRENT-MAINLINE.md
 STATUS.md
 HANDOFF.md
+DECISION-LOG.md
+ARCHITECTURE.md
 ```
 
-目标：保证任何新会话、新工具、新协作者打开仓库后不会走错主线。
+目标：保证新会话、新工具、新协作者打开仓库后不会误把 V2 内容生产体系当成最高主线。
 
-### P2：实验保留
+---
+
+### P2：表达与传播模块同步
+
+```text
+05-内容生产体系/
+06-Dify多Agent工作流/
+```
+
+目标：保留 V2 内容生产资产，但逐步同步 V3。
+
+同步方向：
+
+```text
+从：触发点 → 选题 → 脚本 → 发布 → 复盘
+
+升级为：
+触发点 → 硅基处理 → Lab 交付判断 → 表达传播执行包 → 现实反馈
+```
+
+---
+
+### P3：实验保留
 
 ```text
 agent-studio/
 hel-agent-workbench/
-06-Dify多Agent工作流/
 ```
 
 目标：保留工具化探索，但不让实验路线压过当前主线。
 
-### P3：暂缓
+---
+
+### P4：暂缓
 
 ```text
 04-外部输入模块/
@@ -90,9 +152,27 @@ guide/
 ## 当前阶段验收标准
 
 ```text
-1. 至少 10 条真实 OBS 入库。
-2. 至少 3 条内容完成发布。
-3. 每条发布内容都有数据复盘。
-4. 复盘能反向生成下一轮 OBS。
-5. Dify 节点 1 + 节点 2 能稳定跑通。
+1. 至少整理 10 条已有真实触发点。
+2. 至少 3 条真实触发点完成 V3 Lab 运行日志。
+3. 每条运行日志都包含：碳基输入、硅基处理、Lab 交付判断、证据强度、下一步现实动作。
+4. 至少 1 条触发点带回物理世界验证。
+5. 至少 1 条反馈写回规则库、OBS 或运行日志。
+6. 05-内容生产体系 不再作为最高主线，只作为表达与传播模块调用。
 ```
+
+---
+
+## 当前硬边界
+
+```text
+没有真实触发，不进入系统。
+没有证据，不写成事实。
+没有现实反馈，不进入稳定规则库。
+不默认所有触发点都要做成内容。
+不把数字生命当普通文案助手。
+不把 Human-Environment-Lab 简化成内容工厂。
+```
+
+---
+
+*最后更新：2026-06-16*
