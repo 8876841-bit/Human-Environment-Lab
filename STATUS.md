@@ -60,24 +60,27 @@ Human-Environment-Lab = 手和脚 / 内容与视频执行系统
 | `ARCHITECTURE.md` | `CORE / SUPPORT / SYNCED` | 架构说明，已改为数字生命为脑、HEL 为手脚 |
 | `DECISION-LOG.md` | `CORE` | 重大决策记录 |
 | `DECISION-LOG-V3.3.md` | `CORE / SUPPORT` | V3.3 校正决策记录 |
+| `00-System/` | `LEGACY / REFERENCE` | V0.6 / V0.6.1 英文版模型文件，历史参考，不作为当前主线 |
 | `00-系统内核/` | `KERNEL / CORE` | 顶层内核：有形的我、数字生命、HEL 的关系定义 |
 | `00-系统内核/ROOT-LOCK-根基锁定.md` | `KERNEL / CORE / FOUNDATION_LOCK` | 原始根基保护文件 |
 | `01-观察框架/` | `FOUNDATION` | 原始观察模型，保留为原创内容生成根基 |
 | `02-内容引擎/` | `FOUNDATION / ASSET` | 早期内容流水线 V1，作为内容生成资产库 |
+| `02-模型压测/` | `LEGACY / REFERENCE` | V0.6.1 模型压力测试报告，历史参考 |
 | `03-观察日志/` | `FOUNDATION` | 真实观察、触发点、现实反馈沉淀位置 |
 | `04-账号矩阵/` | `LEGACY / REFERENCE / PENDING` | 账号矩阵历史设定，当前不定稿 |
 | `05-内容生产体系/` | `ASSET / CONTENT_VIDEO` | 早期内容生成、视频生成、平台表达执行资产库 |
 | `06-Dify多Agent工作流/` | `LEGACY / REFERENCE` | V2-V4.1 内容生产工作流参考 |
-| `06-硅基数字生命工作流-V3/` | `IMPLEMENTATION / REFERENCE` | V3 工作流骨架，后续需按“数字生命为脑”重新校正 |
 | `07-运行中台/` | `OPERATIONS / SUPPORT` | 状态控制层，保留但不作为当前内容执行主线 |
 | `08-便携交互层/` | `EXPERIMENT / PAUSED` | 便携交互试验，当前暂停，不再作为核心推进 |
 | `09-内容与视频执行中台/` | `CORE / EXECUTION / CONTENT_VIDEO` | 当前第一战场：内容、视频、平台、数据、投放、采集 |
 | `09-内容与视频执行中台/07-平台运营与转化规则.md` | `EXECUTION / CONVERSION / SYNCED` | 平台运营、用户行为、信任、转化和反馈优化规则 |
-| `04-外部输入模块/` | `RESERVED` | n8n 多平台采集，后期根据需要开启 |
+| `10-外部输入模块/` | `RESERVED` | n8n 多平台采集，后期根据需要开启 |
+| `11-硅基数字生命工作流-V3/` | `IMPLEMENTATION / REFERENCE` | V3 工作流骨架，后续需按”数字生命为脑”重新校正 |
+| `docs/` | `SUPPORT` | GitHub Pages 公开展示目录，只含 index.html 和 guide/ |
 | `guide/` | `LEGACY` | 早期 Coze/Liblib/TapNow 指南，历史参考 |
 | `agent-studio/` | `EXPERIMENT` | 浏览器端工作台，本地实验，不作为当前主线 |
 | `hel-agent-workbench/` | `EXPERIMENT` | Python Agent 原型，可用于代码化验证 |
-| `index.html` | `SUPPORT` | GitHub Pages 展示页 |
+| `index.html` | `SUPPORT` | 仓库根目录展示页（本地/开发用），公开展示已迁移至 docs/ |
 | `HISTORY.md` | `SUPPORT` | 历史演变记录 |
 | `DERIVATION.md` | `SUPPORT` | 设计推导与决策依据 |
 
@@ -149,7 +152,7 @@ ARCHITECTURE.md
 ```text
 09-内容与视频执行中台/08-数据投放信息采集预留.md
 09-内容与视频执行中台/11-账号矩阵与平台阵型-待定.md
-04-外部输入模块/
+10-外部输入模块/
 ```
 
 目标：后续根据真实数据、平台反馈和执行能力逐步启动。

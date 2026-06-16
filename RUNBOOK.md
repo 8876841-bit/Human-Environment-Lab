@@ -384,7 +384,7 @@ EXPERIMENT / PAUSED
 
 ```text
 07-运行中台/
-06-硅基数字生命工作流-V3/
+11-硅基数字生命工作流-V3/
 06-Dify多Agent工作流/
 agent-studio/
 hel-agent-workbench/

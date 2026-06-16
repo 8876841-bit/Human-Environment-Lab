@@ -158,18 +158,21 @@ HEL 可以执行根基，但不能重新定义根基。
 ## 6. 仓库模块架构
 
 ```text
+00-System/                      ← LEGACY / REFERENCE：V0.6/V0.6.1 英文模型，历史参考
 00-系统内核/                    ← KERNEL / CORE：顶层关系与根基保护
 01-观察框架/                    ← FOUNDATION：原始观察框架
 02-内容引擎/                    ← FOUNDATION / ASSET：早期内容流水线资产
+02-模型压测/                    ← LEGACY / REFERENCE：V0.6.1 模型压力测试报告
 03-观察日志/                    ← FOUNDATION：真实观察与反馈沉淀
 04-账号矩阵/                    ← LEGACY / REFERENCE / PENDING：历史账号矩阵设定，当前待定
 05-内容生产体系/                ← ASSET / CONTENT_VIDEO：旧内容、视频、平台表达资产库
 06-Dify多Agent工作流/           ← LEGACY / REFERENCE：旧工作流参考
-06-硅基数字生命工作流-V3/        ← IMPLEMENTATION / REFERENCE：后续需按 V3.3 校正
 07-运行中台/                    ← OPERATIONS / SUPPORT：状态控制层，保留但不作为当前执行主线
 08-便携交互层/                  ← EXPERIMENT / PAUSED：暂停
-09-内容与视频执行中台/           ← CORE / EXECUTION / CONTENT_VIDEO：当前第一战场
-04-外部输入模块/                ← RESERVED：后期外部采集能力
+09-内容与视频执行中台/          ← CORE / EXECUTION / CONTENT_VIDEO：当前第一战场
+10-外部输入模块/                ← RESERVED：后期外部采集能力
+11-硅基数字生命工作流-V3/       ← IMPLEMENTATION / REFERENCE：后续需按 V3.3 校正
+docs/                           ← SUPPORT：GitHub Pages 公开展示目录
 agent-studio/                   ← EXPERIMENT：浏览器端实验工作台
 hel-agent-workbench/            ← EXPERIMENT：Python Agent 原型
 guide/                          ← LEGACY：早期指南
@@ -292,7 +295,7 @@ AI 给骨架，人工给灵魂
 | 模块 | V3.3 定位 | 当前状态 |
 |---|---|---|
 | Dify 工作流 | 旧内容生产工作流参考，后续可按 09 主链路重建 | LEGACY / REFERENCE |
-| 06-硅基数字生命工作流-V3 | 工作流骨架，后续需按“数字生命为脑”重校正 | IMPLEMENTATION / REFERENCE |
+| 11-硅基数字生命工作流-V3 | 工作流骨架，后续需按“数字生命为脑”重校正 | IMPLEMENTATION / REFERENCE |
 | agent-studio | 浏览器端实验工作台 | EXPERIMENT |
 | hel-agent-workbench | Python Agent 原型 | EXPERIMENT |
 | n8n / 外部输入 | 后期信息采集自动化 | RESERVED |

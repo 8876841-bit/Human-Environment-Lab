@@ -112,17 +112,21 @@ STATUS.md
 ## 目录结构与状态
 
 ```text
+00-System/                      ← LEGACY / REFERENCE：V0.6/V0.6.1 英文模型，历史参考
 00-系统内核/                    ← KERNEL / CORE：数字生命为脑，HEL 为手脚
 01-观察框架/                    ← FOUNDATION：原创内容生成根基之一
 02-内容引擎/                    ← FOUNDATION / ASSET：早期内容流水线 V1
+02-模型压测/                    ← LEGACY / REFERENCE：V0.6.1 模型压力测试报告
 03-观察日志/                    ← FOUNDATION：真实观察、触发点、反馈沉淀
 04-账号矩阵/                    ← LEGACY / REFERENCE / PENDING：账号矩阵历史设定，当前不定稿
 05-内容生产体系/                ← ASSET / CONTENT_VIDEO：早期内容生成与视频执行资产库
 06-Dify多Agent工作流/           ← LEGACY / REFERENCE：旧 Dify 内容生产工作流参考
-06-硅基数字生命工作流-V3/       ← IMPLEMENTATION / REFERENCE：V3 工作流骨架，后续需校正
 07-运行中台/                    ← OPERATIONS / SUPPORT：状态控制层，保留
 08-便携交互层/                  ← EXPERIMENT / PAUSED：便携交互试验，当前暂停
 09-内容与视频执行中台/          ← CORE / EXECUTION / CONTENT_VIDEO：当前第一战场
+10-外部输入模块/                ← RESERVED：n8n 多平台采集，后期开启
+11-硅基数字生命工作流-V3/       ← IMPLEMENTATION / REFERENCE：V3 工作流骨架，后续需校正
+docs/                           ← SUPPORT：GitHub Pages 公开展示目录
 ```
 
 ---

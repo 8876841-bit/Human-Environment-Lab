@@ -167,7 +167,7 @@ GitHub Issue = 单个触发点的独立生命线。
 ```text
 不再继续逐个同步旧脚本 Agent、视觉 Agent、视频 Agent、复盘 Agent。
 旧 06-Dify多Agent工作流/ 冻结为 V2-V4.1 内容生产参考资产。
-新增 06-硅基数字生命工作流-V3/，按 V3 主线重新搭建。
+新增 11-硅基数字生命工作流-V3/，按 V3 主线重新搭建。
 ```
 
 ### 理由
@@ -180,7 +180,7 @@ GitHub Issue = 单个触发点的独立生命线。
 ### 新增目录
 
 ```text
-06-硅基数字生命工作流-V3/
+11-硅基数字生命工作流-V3/
 ```
 
 已新增骨架：
@@ -212,7 +212,7 @@ examples/001-真实触发到Lab判断.md
 ### 新目录状态
 
 ```text
-06-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
+11-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
 ```
 
 ### 硬边界
@@ -268,7 +268,7 @@ STATUS.md
 ```text
 05-内容生产体系/ = OUTPUT / PARTIAL_SYNC
 06-Dify多Agent工作流/ = LEGACY / REFERENCE
-06-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
+11-硅基数字生命工作流-V3/ = IMPLEMENTATION / V3_REBUILD
 ```
 
 ### 硬边界
@@ -312,7 +312,7 @@ V3 主线定义为：
 - 新增 `00-系统内核/` 作为最高优先级内核层。
 - `05-内容生产体系/` 不再是最高主线，降级为 `OUTPUT / PARTIAL_SYNC`。
 - `06-Dify多Agent工作流/` 已进一步降级为 `LEGACY / REFERENCE`。
-- 新增 `06-硅基数字生命工作流-V3/` 作为当前 V3 工作流重建目录。
+- 新增 `11-硅基数字生命工作流-V3/` 作为当前 V3 工作流重建目录。
 - 新增 `07-运行中台/` 作为当前 V3.1 状态控制层。
 - 新增 `08-便携交互层/` 作为当前 V3.2 便携交互层。
 - `README.md`、`CURRENT-MAINLINE.md`、`STATUS.md`、`ARCHITECTURE.md`、`RUNBOOK.md`、`HANDOFF.md` 已更新到 V3 / V3.1 / V3.2 主线。
@@ -447,7 +447,7 @@ Coze = 快速验证 / 历史参考
 Dify 仍是重要底座。
 但 V3 中，不再沿用旧内容生产 Agent 结构作为主线。
 旧 06-Dify多Agent工作流/ 冻结为参考资产。
-新 06-硅基数字生命工作流-V3/ 作为 V3 工作流重建目录。
+新 11-硅基数字生命工作流-V3/ 作为 V3 工作流重建目录。
 ```
 
 ---

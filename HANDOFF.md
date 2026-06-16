@@ -118,7 +118,7 @@ ARCHITECTURE.md                   架构说明
 | `04-账号矩阵/` | `LEGACY / REFERENCE / PENDING` | 历史账号矩阵设定，当前待定 |
 | `05-内容生产体系/` | `ASSET / CONTENT_VIDEO` | 旧内容生成、视频、平台执行资产库 |
 | `06-Dify多Agent工作流/` | `LEGACY / REFERENCE` | 旧工作流参考 |
-| `06-硅基数字生命工作流-V3/` | `IMPLEMENTATION / REFERENCE` | 工作流骨架，后续需按 V3.3 重新校正 |
+| `11-硅基数字生命工作流-V3/` | `IMPLEMENTATION / REFERENCE` | 工作流骨架，后续需按 V3.3 重新校正 |
 | `07-运行中台/` | `OPERATIONS / SUPPORT` | 状态控制层，保留但不作为当前内容执行主线 |
 | `08-便携交互层/` | `EXPERIMENT / PAUSED` | 暂停使用 |
 | `09-内容与视频执行中台/` | `CORE / EXECUTION / CONTENT_VIDEO` | 当前第一战场 |

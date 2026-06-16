@@ -1,3 +1,25 @@
+# 环境与密钥
 .env
+
+# hel-agent-workbench 运行时文件
 hel-agent-workbench/config.yaml
 hel-agent-workbench/results/*.json
+
+# Claude Code 本地用户设置（不提交，只提交 settings.json）
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+
+# 日志
+*.log
