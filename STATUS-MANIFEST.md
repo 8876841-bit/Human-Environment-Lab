@@ -12,7 +12,7 @@
 | **00-系统内核/** | | |
 | 00-系统内核/ROOT-LOCK-根基锁定.md | CORE | 2026-06-18 |
 | 00-系统内核/00-碳基硅基双分身协作协议.md | CORE | V3.3 |
-| 00-系统内核/01-Human-Environment-Lab总定义.md | CORE | V3.3 |
+| 00-系统内核/01-Human-Environment-Lab总定义.md | CORE | 2026-06-19 |
 | 00-系统内核/02-Loop-Engineering运行协议.md | CORE | V3.3 |
 | 00-系统内核/03-迁移说明-V2到V3.md | CORE | V3 迁移期 |
 | **00-System/** | | |
