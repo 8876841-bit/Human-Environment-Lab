@@ -15,6 +15,7 @@
 | 00-系统内核/01-Human-Environment-Lab总定义.md | CORE | 2026-06-19 |
 | 00-系统内核/02-Loop-Engineering运行协议.md | CORE | V3.3 |
 | 00-系统内核/03-迁移说明-V2到V3.md | CORE | V3 迁移期 |
+| 00-系统内核/04-数字生命自身定义.md | CORE | 2026-06-19 |
 | **00-System/** | | |
 | 00-System/ | LEGACY | V0.6/V0.6.1 英文模型，勿使用 |
 | **01-观察框架/** | | |
