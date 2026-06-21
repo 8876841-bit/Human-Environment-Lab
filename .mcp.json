@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "hel-rag": {
+      "command": "python3",
+      "args": ["RAG/mcp_server.py"],
+      "cwd": "/private/tmp/Human-Environment-Lab"
+    }
+  }
+}
