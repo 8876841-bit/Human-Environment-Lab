@@ -1,6 +1,7 @@
 # Human-Environment-Lab 交接说明
 
 > 本文件用于跨工具、跨会话接续。进入新会话后，先读本文件。
+> ⚠️ Claude新会话启动：读完本文件后，必须执行 SESSION-RESTORE.md 的完整还原流程。不要跳过。
 
 ---
 
