@@ -231,4 +231,19 @@ STATUS.md
 
 ---
 
-*最后更新：2026-06-17*
+## RAG 检索服务
+
+```
+本地运行：python3 RAG/server.py
+端口：8765
+索引范围：CORE + 03-观察日志（随想+问题追踪）+ 待整理区
+重建索引：curl -X POST http://127.0.0.1:8765/reindex
+检索：curl 'http://127.0.0.1:8765/search?q=xxx&top_k=5'
+
+Claude 通过 MCP 接入，Codex 直接调 API。
+一底层双执行。
+```
+
+---
+
+*最后更新：2026-06-21*

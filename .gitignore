@@ -23,3 +23,9 @@ __pycache__/
 
 # 日志
 *.log.env
+
+# RAG 服务
+RAG/chroma_db/
+RAG/rag.log
+RAG/rag.pid
+RAG/__pycache__/
