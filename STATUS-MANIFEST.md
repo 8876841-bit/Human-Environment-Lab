@@ -11,7 +11,7 @@
 |------|------|---------|
 | **00-系统内核/** | | |
 | 00-系统内核/ROOT-LOCK-根基锁定.md | CORE | 2026-06-21 |
-| 00-系统内核/00-碳基硅基双分身协作协议.md | CORE | V3.3 |
+| 00-系统内核/00-碳基硅基双分身协作协议.md | CORE | 2026-06-24（P0补齐） |
 | 00-系统内核/01-Human-Environment-Lab总定义.md | CORE | 2026-06-19 |
 | 00-系统内核/02-Loop-Engineering运行协议.md | CORE | V3.3 |
 | 00-系统内核/03-迁移说明-V2到V3.md | CORE | V3 迁移期 |
@@ -122,3 +122,55 @@
 2. 用户确认后 → 搬进目标目录 → 改为 CORE → 更新本清单
 3. 旧文件被新版本替代 → 改标 LEGACY
 4. 每次状态变更必须更新本清单的"最后更新"列
+
+---
+
+## 当前事实源（11个文件）
+
+以下为 AI 执行判断时的优先读取文件。所有 Agent 必须基于这些文件做判断：
+
+```
+CLAUDE.md
+HANDOFF.md
+STATUS-MANIFEST.md
+SESSION-RESTORE.md
+HOW-I-WORK-WITH-YOU.md
+00-系统内核/ROOT-LOCK-根基锁定.md
+00-系统内核/04-数字生命自身定义.md
+00-系统内核/00-碳基硅基双分身协作协议.md
+01-观察框架/人与环境观察框架-V1.md
+07-运行中台/AI调度中枢/ROUTER-任务路由规则.md
+RAG/RAG-SCOPE.md
+```
+
+## 不应作为事实源
+
+```
+00-System/                  → LEGACY：V0.6/V0.6.1，已被 V3.3 替代
+.legacy/话题库-V1.md        → LEGACY：已被选题母树 V2 替代
+.legacy/重复备份-2026-06-24/ → LEGACY：待整理区重复文件备份
+待整理区/                    → DRAFT：任何文件未经用户确认，不可作为决策依据
+06-Dify多Agent工作流/        → LEGACY/REFERENCE：待 V3.3 校正
+08-便携交互层/               → PAUSED：实验暂停
+11-硅基数字生命工作流-V3/    → REFERENCE：待校正
+```
+
+## 空目录状态
+
+| 目录 | 状态 | 说明 |
+|------|------|------|
+| 00-System | LEGACY | V0.6/V0.6.1 已迁移，目录保留 |
+| 02-内容引擎 | RESERVED | 原规划内容生成引擎，待填充 |
+| 02-模型压测 | RESERVED | 预留 |
+| 04-账号矩阵 | RESERVED | 预留，后期启用 |
+| 05-内容生产体系 | ASSET | 早期资产已迁移，目录保留 |
+| 06-Dify多Agent工作流 | LEGACY | 待 V3.3 校正 |
+| 07-资产库 | RESERVED | 预留内容资产存储 |
+| 08-便携交互层 | PAUSED | 暂不推进 |
+| 10-外部输入模块 | RESERVED | 后期根据需要开启 |
+| 11-硅基数字生命工作流-V3 | REFERENCE | 待校正 |
+| agent-studio | RESERVED | 预留 |
+| docs | RESERVED | 预留 |
+| guide | RESERVED | 预留 |
+| hel-agent-workbench | RESERVED | 预留 |
+| scripts | RESERVED | 预留，待 CODEX-001 填充 |
