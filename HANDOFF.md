@@ -12,6 +12,14 @@
 - 新建 `07-运行中台/06-入口协议/HEL-新对话启动提示词.md`：可复制的启动提示词模板
 - 新建执行回执目录 `07-运行中台/09-执行回执/`
 - 更新 STATUS-MANIFEST.md：新增07-运行中台条目
+- 补丁修正：启动依据改为仓库真实存在的8个文件
+
+## ⚡ 最新操作｜2026-06-24：建立 AI 调度中枢
+
+- 新建 `07-运行中台/AI调度中枢/`：最小 AI 调度中枢，ChatGPT/Claude/Codex/RAG 通过本目录文件协作
+- 包含12个文件：README、CURRENT-FACTS、INBOX、ROUTER、RAG-CONTEXT、CHATGPT-BRIEF、CODEX-TASKS、RESULTS、DECISIONS、ACCEPTANCE-CHECKLIST
+- 新建 `RAG/RAG-SCOPE.md`：RAG 检索边界与权重
+- 更新 STATUS-MANIFEST.md：新增调度中枢和RAG-SCOPE条目
 
 ---
 
