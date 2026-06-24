@@ -20,10 +20,18 @@
 ### 第二步：RAG检索当前状态（每个查一次）
 
 ```
-□ search_hel_knowledge("最新会话 06-21 时间有限性 想到在先 圆盘卡槽")
-□ search_hel_knowledge("内容分类 变现路径 C档视频 成本效果")
-□ search_hel_knowledge("Codex 脚本格式 RAG 检索")
+□ search_hel_knowledge("Claude Codex 分工 大脑 手脚 视频制作管线 Seedance")
+□ search_hel_knowledge("视频日记 我消失了几天 口播 制作包")
+□ search_hel_knowledge("最新会话 06-21 制作包 V3 视频生成")
 □ search_hel_knowledge("待决定 商业模式 图文模板 从零开始")
+```
+
+### 第二步B：确认视频制作管线（如涉及内容生产）
+
+```
+□ RAG是否在运行？curl http://127.0.0.1:8765/health
+□ Codex是否能访问？检查待整理区是否有 Codex 写回的结果
+□ 当前是否有待执行的制作包？检查 待整理区/DRAFT-视频-*
 ```
 
 ### 第三步：确认当前工作状态
