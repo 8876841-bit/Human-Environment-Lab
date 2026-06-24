@@ -92,6 +92,8 @@ ROOT-LOCK 从 8 条扩充至 17 条。
 | 还原清单 | SESSION-RESTORE.md | CORE |
 | 沟通规范 | HOW-I-WORK-WITH-YOU.md | CORE |
 
+> **关于文件缺失**：如果 README.md、CURRENT-MAINLINE.md、STATUS.md 在仓库中不存在，则以 STATUS-MANIFEST.md（状态清单）、HANDOFF.md（会话交接）、SESSION-RESTORE.md（还原流程）、CLAUDE.md（新会话入口）和 ROOT-LOCK（根基锁定）作为当前恢复依据。不依赖不存在的文件。
+
 ---
 
 ## 四、ChatGPT / Claude / Codex / RAG 分工

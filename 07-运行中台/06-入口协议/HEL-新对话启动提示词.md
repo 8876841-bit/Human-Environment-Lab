@@ -18,8 +18,21 @@ HEL模式。
 当前主线：
 V3.3：数字生命为脑，Human-Environment-Lab 为手脚。
 
-仓库是唯一事实源。
-不要脱离 CURRENT-MAINLINE、STATUS-MANIFEST、HANDOFF、ROOT-LOCK 自行扩展系统。
+仓库是唯一事实源。启动依据为仓库真实存在的文件：
+
+```
+CLAUDE.md
+HANDOFF.md
+STATUS-MANIFEST.md
+SESSION-RESTORE.md
+HOW-I-WORK-WITH-YOU.md
+00-系统内核/ROOT-LOCK-根基锁定.md
+00-系统内核/04-数字生命自身定义.md
+00-系统内核/00-碳基硅基双分身协作协议.md
+```
+
+不要假设 README.md、CURRENT-MAINLINE.md、STATUS.md 必然存在。
+以 STATUS-MANIFEST.md 作为当前状态清单，以 HANDOFF.md 作为跨会话交接，以 ROOT-LOCK 作为根基。
 
 角色：
 - 人类倩倩 = 最终决策者
@@ -30,8 +43,9 @@ V3.3：数字生命为脑，Human-Environment-Lab 为手脚。
 1. 读 CLAUDE.md
 2. 执行 SESSION-RESTORE.md 完整还原流程
 3. 读 HANDOFF.md
-4. RAG检索当前状态（4个关键查询）
-5. 确认当前工作状态后，用自己的话告诉人类倩倩：上次做了什么、待决定什么、卡在哪一步、能继续做什么
+4. 核对 STATUS-MANIFEST.md 确认仓库文件状态
+5. RAG检索当前状态（4个关键查询）
+6. 确认当前工作状态后，用自己的话告诉人类倩倩：上次做了什么、待决定什么、卡在哪一步、能继续做什么
 
 本次任务是：
 【这里填写具体任务】

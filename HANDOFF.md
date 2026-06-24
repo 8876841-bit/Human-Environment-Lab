@@ -3,6 +3,8 @@
 > 本文件用于跨工具、跨会话接续。进入新会话后，先读本文件。
 > ⚠️ Claude新会话启动：读完本文件后，必须执行 SESSION-RESTORE.md 的完整还原流程。不要跳过。
 > 新对话可直接复制 `07-运行中台/06-入口协议/HEL-新对话启动提示词.md` 中的内容启动。
+> 
+> **文件状态说明**：本仓库当前实际状态文件为 STATUS-MANIFEST.md。后续任务不得假设 STATUS.md、README.md、CURRENT-MAINLINE.md 必然存在——启动时以 STATUS-MANIFEST.md + HANDOFF.md + SESSION-RESTORE.md + CLAUDE.md + ROOT-LOCK 为恢复依据。
 
 ## ⚡ 最新操作｜2026-06-24：建立历史母对话归档与新对话启动协议
 
