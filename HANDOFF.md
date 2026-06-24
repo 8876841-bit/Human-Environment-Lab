@@ -19,7 +19,9 @@
 - 新建 `07-运行中台/AI调度中枢/`：最小 AI 调度中枢，ChatGPT/Claude/Codex/RAG 通过本目录文件协作
 - 包含12个文件：README、CURRENT-FACTS、INBOX、ROUTER、RAG-CONTEXT、CHATGPT-BRIEF、CODEX-TASKS、RESULTS、DECISIONS、ACCEPTANCE-CHECKLIST
 - 新建 `RAG/RAG-SCOPE.md`：RAG 检索边界与权重
-- 更新 STATUS-MANIFEST.md：新增调度中枢和RAG-SCOPE条目
+- 用户已确认启用。仍处于 V1 初版，后续重大修改需用户确认
+- 已创建 CODEX-001：路径一致性检查脚本
+- README 已补充完整路径表，禁止使用简称
 
 ---
 

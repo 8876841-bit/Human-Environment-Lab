@@ -14,4 +14,10 @@
 
 ## 当前裁决
 
-（待人类倩倩填写）
+【2026-06-24】
+裁决事项：正式启用 AI 调度中枢
+裁决结果：确认
+启用范围：任务路由、RAG依据池、ChatGPT判断简报、Codex工程任务池、执行结果池
+限制：不允许任何工具自行修改 ROOT-LOCK、模型主文件、最终世界观判断
+后续动作：Claude 更新 README、CODEX-TASKS、HANDOFF、STATUS-MANIFEST
+
