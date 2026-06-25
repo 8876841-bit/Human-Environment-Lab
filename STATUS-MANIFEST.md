@@ -83,6 +83,8 @@
 | 07-运行中台/AI调度中枢/CURRENT-FACTS-当前事实源.md | CORE | 2026-06-25 |
 | 07-运行中台/AI调度中枢/ROUTER-任务路由规则.md | CORE | 2026-06-24 |
 | 07-运行中台/AI调度中枢/RAG-CONTEXT-检索依据池.md | CORE | 2026-06-24 |
+| 待整理区/DRAFT-内容生产最小调度卡-2026-06-25.md | DRAFT | 2026-06-25 |
+| 09-内容与视频执行中台/内容资产包/content-pack-001-真正拥有/ | DRAFT | 2026-06-25 |
 | 07-运行中台/AI调度中枢/ACCEPTANCE-CHECKLIST.md | CORE | 2026-06-24 |
 | RAG/RAG-SCOPE.md | CORE | 2026-06-24 |
 | **10-外部输入模块/** | | |
