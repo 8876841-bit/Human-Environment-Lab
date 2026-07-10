@@ -27,7 +27,13 @@
       "Bash(git push * --force)",
       "Bash(git push * -f)",
       "Bash(git clean -fd *)",
-      "Bash(rm -rf *)"
+      "Bash(rm -rf *)",
+      "Bash(git reset *)",
+      "Bash(python3 *)",
+      "WebFetch(domain:www.mohurd.gov.cn)",
+      "WebFetch(domain:www.mof.gov.cn)",
+      "WebFetch(domain:www.gov.cn)",
+      "Bash(git fetch *)"
     ]
   }
 }
